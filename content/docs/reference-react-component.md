@@ -15,11 +15,11 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-This page contains a detailed API reference for the React component class definition. It assumes you're familiar with fundamental React concepts, such as [Components and Props](/docs/components-and-props.html), as well as [State and Lifecycle](/docs/state-and-lifecycle.html). If you're not, read them first.
+Trang này chứa chi tiết về một API reference cho việc định nghĩa class đối với React component. Giả sử rằng bạn đã quen thuộc với các khái niệp cơ bản của React, như [Components và Props](/docs/components-and-props.html), cũng như [State và Lifecycle](/docs/state-and-lifecycle.html). Nếu chưa, hãy đọc những khái niệm này trước.
 
-## Overview {#overview}
+## Tổng quan {#overview}
 
-React lets you define components as classes or functions. Components defined as classes currently provide more features which are described in detail on this page. To define a React component class, you need to extend `React.Component`:
+React để bạn định nghĩa các component như những class hoặc những funtion. Các component được định nghĩa như những class hiện tại cung cấp nhiều tính năng sẽ được trình bày trong trang này. Để định nghĩa một class React component, bạn cần kế thừa `React.Component`:
 
 ```js
 class Welcome extends React.Component {
@@ -29,13 +29,13 @@ class Welcome extends React.Component {
 }
 ```
 
-The only method you *must* define in a `React.Component` subclass is called [`render()`](#render). All the other methods described on this page are optional.
+Phương thức duy nhất mà bạn *bắt buộc* phải định nghĩa trong một component kế thừa từ `React.Component` được gọi là [`render()`](#render). Tất cả các phương thức khác được trình bày ở trang này đều không bắt buộc (optional).
 
-**We strongly recommend against creating your own base component classes.** In React components, [code reuse is primarily achieved through composition rather than inheritance](/docs/composition-vs-inheritance.html).
+**Chúng tôi rất khuyến khích đối với việc tạo các component cơ bản với class việcWe strongly recommend against creating your own base component classes.** In React components, [code reuse is primarily achieved through composition rather than inheritance](/docs/composition-vs-inheritance.html).
 
->Note:
+>Chú ý:
 >
->React doesn't force you to use the ES6 class syntax. If you prefer to avoid it, you may use the `create-react-class` module or a similar custom abstraction instead. Take a look at [Using React without ES6](/docs/react-without-es6.html) to learn more.
+>React không ép bạn phải sử dụng cú pháp ES6 để khai báo class. Nếu bạn không muốn dùng nó, bạn có thể sử dụng `create-react-class` module hoặc một abstraction tương tự để thay thếor a similar custom abstraction instead. Take a look at [Using React without ES6](/docs/react-without-es6.html) to learn more.
 
 ### The Component Lifecycle {#the-component-lifecycle}
 
