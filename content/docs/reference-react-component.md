@@ -31,34 +31,34 @@ class Welcome extends React.Component {
 
 Phương thức duy nhất mà bạn *bắt buộc* phải định nghĩa trong một component kế thừa từ `React.Component` được gọi là [`render()`](#render). Tất cả các phương thức khác được trình bày ở trang này đều không bắt buộc (optional).
 
-**Chúng tôi rất khuyến khích đối với việc tạo các component cơ bản với class việcWe strongly recommend against creating your own base component classes.** In React components, [code reuse is primarily achieved through composition rather than inheritance](/docs/composition-vs-inheritance.html).
+**Chúng tôi đề nghị bạn không nên tạo các class component cơ bản (nghĩa là không nên tạo 1 component sau đó để các component khác kế thừa)** Trong các React component, [tái sử dụng code (code reuse) được thực hiện chủ yếu thông qua tính kết hợp (composition) hơn là kế thừa (inheritance)](/docs/composition-vs-inheritance.html).
 
 >Chú ý:
 >
->React không ép bạn phải sử dụng cú pháp ES6 để khai báo class. Nếu bạn không muốn dùng nó, bạn có thể sử dụng `create-react-class` module hoặc một abstraction tương tự để thay thếor a similar custom abstraction instead. Take a look at [Using React without ES6](/docs/react-without-es6.html) to learn more.
+>React không bắt buộc bạn phải sử dụng cú pháp ES6 class. Nếu bạn không muốn dùng nó, bạn có thể sử dụng `create-react-class` module hoặc một lớp trừu tượng (custom abstraction) tương tự để thay thế. Xem qua [Sử dụng React không cần ES6](/docs/react-without-es6.html) để biết thêm.
 
-### The Component Lifecycle {#the-component-lifecycle}
+### Vòng Đời Của Component{#the-component-lifecycle}
 
-Each component has several "lifecycle methods" that you can override to run code at particular times in the process. **You can use [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a cheat sheet.** In the list below, commonly used lifecycle methods are marked as **bold**. The rest of them exist for relatively rare use cases.
+Mỗi component có một vài "hàm vòng đời" (lifecycle methods) mà bạn có thể viết lại (override) để chạy code ở một số thời điểm cụ thể trong một tiến trình (process). **Bạn có thể sử dụng [sơ đồ vòng đời](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) như một trang thu gọn (cheat sheet).** Trong danh sách bên dưới, những phương thức được sử dụng phổ biến được **bôi đen**. Phần còn lại thì hiếm khi được sử dụng.
 
 #### Mounting {#mounting}
 
-These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+Các phương thức được gọi theo thứ tự khi một thể hiện của component (instance of a component) đang được tạo ra và chèn vào DOM:
 
 - [**`constructor()`**](#constructor)
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
 - [**`render()`**](#render)
 - [**`componentDidMount()`**](#componentdidmount)
 
->Note:
+>Chú ý:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>Những phương thức đã được xem xét là "cũ" (legacy) và bạn nên [tránh sử dụng chúng](/blog/2018/03/27/update-on-async-rendering.html) trong code mới:
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
 #### Updating {#updating}
 
-An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
+Một update có thể được tạo ra bằng việc thay đổi props hoặc state. Những phương thức được gọi theo thứ tự khi một component đang được render lại (re-rendered):
 
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
 - [`shouldComponentUpdate()`](#shouldcomponentupdate)
@@ -66,29 +66,29 @@ An update can be caused by changes to props or state. These methods are called i
 - [`getSnapshotBeforeUpdate()`](#getsnapshotbeforeupdate)
 - [**`componentDidUpdate()`**](#componentdidupdate)
 
->Note:
+>Chú ý:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>Những phương thức đã được xem xét là "cũ" (legacy) và bạn nên [tránh sử dụng chúng](/blog/2018/03/27/update-on-async-rendering.html) trong code mới:
 >
 >- [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)
 >- [`UNSAFE_componentWillReceiveProps()`](#unsafe_componentwillreceiveprops)
 
 #### Unmounting {#unmounting}
 
-This method is called when a component is being removed from the DOM:
+Phương thức này được gọi khi một component đang được xóa khỏi DOM:
 
 - [**`componentWillUnmount()`**](#componentwillunmount)
 
-#### Error Handling {#error-handling}
+#### Xử lí lỗi (Error handling) {#error-handling}
 
-These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+Những phương thức được gọi khi có một lỗi xảy ra trong quá trình render, trong một "hàm vòng đời", hoặc trong một constructor của bất kì component con nào.
 
 - [`static getDerivedStateFromError()`](#static-getderivedstatefromerror)
 - [`componentDidCatch()`](#componentdidcatch)
 
-### Other APIs {#other-apis}
+### Các API khác {#other-apis}
 
-Each component also provides some other APIs:
+Mỗi component cũng được cung cấp một vài API khác:
 
   - [`setState()`](#setstate)
   - [`forceUpdate()`](#forceupdate)
@@ -107,7 +107,7 @@ Each component also provides some other APIs:
 
 ## Reference {#reference}
 
-### Commonly Used Lifecycle Methods {#commonly-used-lifecycle-methods}
+### Các Hàm Vòng Đời Hay Được Sử Dụng {#commonly-used-lifecycle-methods}
 
 The methods in this section cover the vast majority of use cases you'll encounter creating React components. **For a visual reference, check out [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
 
