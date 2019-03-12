@@ -109,7 +109,7 @@ Mỗi component cũng được cung cấp một vài API khác:
 
 ### Các Hàm Vòng Đời Hay Được Sử Dụng {#commonly-used-lifecycle-methods}
 
-The methods in this section cover the vast majority of use cases you'll encounter creating React components. **For a visual reference, check out [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
+Các phương thức trong phần này bao quát hầu hết những "trường hợp sử dụng"  (use cases) chính mà bạn sẽ gặp khi tạo các React component. **Để tham khảo trực quan, xem qua [sơ đồ vòng đời](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
 
 ### `render()` {#render}
 
@@ -117,19 +117,20 @@ The methods in this section cover the vast majority of use cases you'll encounte
 render()
 ```
 
-The `render()` method is the only required method in a class component.
+Hàm `render()` là hàm bắt buộc duy nhất trong một class component.
 
-When called, it should examine `this.props` and `this.state` and return one of the following types:
+Khi được gọi, nó sẽ kiểm tra `this.props` và `this.state` và trả về một trong các loại sau đây:
 
-- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
-- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
-- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
-- **String and numbers.** These are rendered as text nodes in the DOM.
-- **Booleans or `null`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean.)
 
-The `render()` function should be pure, meaning that it does not modify component state, it returns the same result each time it's invoked, and it does not directly interact with the browser.
+- **React elements.** Thông thường được tạo từ [JSX](/docs/introducing-jsx.html). Ví dụ, `<div />` và `<MyComponent />` là những React element mà để chỉ cho React render một nút trong DOM (DOM node), hoặc một component khác do người dùng định nghĩa tương ứng.
+- **Arrays và fragments.** Để bạn trả về nhiều element từ render. Xem tài liệu chi tiết tại [fragments](/docs/fragments.html).
+- **Portals**. Để bạn render các con (children) vào trong một cây DOM con (DOM subtree) khác. Xem tài liệu chi tiết tại [portals](/docs/portals.html).
+- **String và numbers.** Chúng được render như là các nút văn bản (text nodes) trong DOM.
+- **Booleans or `null`**. Không render gì cả. (Hầu như tồn tại để hỗ trợ "kiểu mẫu" (pattern) `return test && <Child />`, trong đó `test` là kiểu boolean.)
 
-If you need to interact with the browser, perform your work in `componentDidMount()` or the other lifecycle methods instead. Keeping `render()` pure makes components easier to think about.
+Hàm `render()` nên là pure function, nghĩa là nó không chỉnh sửa trạng thái của component (component state), nó trả về kết quả tương ứng mỗi lần mỗi lần nó được gọi, và nó không tương tác trực tiếp với trình duyệt.
+
+Nếu bạn muốn tương tác với trình duyệt, hãy làm việc của bạn trong `componentDidMount()` hoặc hàm vòng đời khác. Giữ `render()` pure làm cho các component dễ dàng hơn "để biết nó đang làm gì" (to think about).
 
 > Note
 >
