@@ -132,9 +132,9 @@ Hàm `render()` nên là pure function, nghĩa là nó không chỉnh sửa tr�
 
 Nếu bạn muốn tương tác với trình duyệt, hãy làm việc của bạn trong `componentDidMount()` hoặc hàm vòng đời khác. Giữ `render()` pure làm cho các component dễ dàng hơn "để biết nó đang làm gì" (to think about).
 
-> Note
+> Chú ý
 >
-> `render()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.
+> `render()` sẽ không được gọi nếu [`shouldComponentUpdate()`](#shouldcomponentupdate) trả về false.
 
 * * *
 
@@ -144,29 +144,29 @@ Nếu bạn muốn tương tác với trình duyệt, hãy làm việc của b�
 constructor(props)
 ```
 
-**If you don't initialize state and you don't bind methods, you don't need to implement a constructor for your React component.**
+**Nếu bạn không khởi tạo state và bạn không bind các hàm, bạn sẽ không cần constructor cho React component của bạn.**
 
-The constructor for a React component is called before it is mounted. When implementing the constructor for a `React.Component` subclass, you should call `super(props)` before any other statement. Otherwise, `this.props` will be undefined in the constructor, which can lead to bugs.
+Constructor cho một React component được gọi trước khi nó được mounted. Khi thực thi một constructor cho một `React.Component` subclass, bạn nên gọi `super(props)` trước bất kì câu lệnh nào. Ngược lại, `this.props` sẽ bị undefined trong constructor, điều này có thể gây ra các bug.
 
-Typically, in React constructors are only used for two purposes:
+Thông thường, các React constructor chỉ được sử dụng cho 2 mục đích:
 
-* Initializing [local state](/docs/state-and-lifecycle.html) by assigning an object to `this.state`.
-* Binding [event handler](/docs/handling-events.html) methods to an instance.
+* Khởi tạo [state cục bộ](/docs/state-and-lifecycle.html) (local state) bằng việc gán một object vào `this.state`.
+* Bind [hàm xử lí các sự kiện](/docs/handling-events.html) (event handler) vào một instance.
 
-You **should not call `setState()`** in the `constructor()`. Instead, if your component needs to use local state, **assign the initial state to `this.state`** directly in the constructor:
+Bạn **không nên gọi `setState()`** trong `constructor()`. Thay vào đó, nếu component của bạn cần sử dụng state cục bộ, **gán trực tiếp giá trị khởi tạo cho state đó vào `this.state`** bên trong constructor:
 
 ```js
 constructor(props) {
   super(props);
-  // Don't call this.setState() here!
+  // Đừng gọi this.setState() ở đây!
   this.state = { counter: 0 };
   this.handleClick = this.handleClick.bind(this);
 }
 ```
 
-Constructor is the only place where you should assign `this.state` directly. In all other methods, you need to use `this.setState()` instead.
+Constructor là nơi duy nhất bạn có thể gán `this.state` một cách trực tiếp. Trong tất cả các hàm khác, bạn cần sử dụng `this.setState()`.
 
-Avoid introducing any side-effects or subscriptions in the constructor. For those use cases, use `componentDidMount()` instead.
+Tránh sử dụng bất kì side-effects (gọi ra bên ngoài, không liên quan đến app nữa) hoặc subscriptions bên trong constructor. For those use cases, use `componentDidMount()` instead.
 
 >Note
 >
